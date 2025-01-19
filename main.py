@@ -27,13 +27,22 @@ def main():
 
 	dt = 0
 
+	keys = pygame.key.get_pressed()
 	while True:
+
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				return
 
 		for obj in updatable:
 			obj.update(dt)
+		
+		for obj in asteroids:
+			if obj.check_collisions(player):
+				print("Game over!")
+				pygame.quit()
+
+
 
 		screen.fill("black")
 		

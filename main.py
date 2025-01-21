@@ -4,6 +4,7 @@ from constants import *
 from player import *
 from asteroid import *
 from asteroidfield import *
+from shot import *
 
 def main():
 	x = SCREEN_WIDTH / 2
@@ -19,13 +20,15 @@ def main():
 
 
 	Asteroid.containers = (asteroids, updatable, drawable)
+	Shot.containers = (shots, updatable, drawable )
 	AsteroidField.containers = (updatable,)
+
 	# shots.containers = (shots, updatable, drawable)
 	
 	asteroid_field = AsteroidField()
-	
 
-	Player.containers = (updatable, drawable)
+
+	Player.containers = (shots, updatable, drawable)
 	player = Player(x, y, PLAYER_RADIUS)
 	# asteroid = Asteroid(x, y, PLAYER_RADIUS)
 
@@ -46,12 +49,14 @@ def main():
 				print("Game over!")
 				pygame.quit()
 
-
+		# for obj in shots:
+			# obj.shoot()
 
 		screen.fill("black")
 		
 		for obj in drawable:
 			obj.draw(screen)
+
 
 
 		# for obj in asteroids:

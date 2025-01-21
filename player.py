@@ -1,7 +1,7 @@
 
 from circleshape import * 
 from shot import *
-from constants import PLAYER_TURN_SPEED, PLAYER_SPEED
+from constants import PLAYER_TURN_SPEED, PLAYER_SPEED, PLAYER_SHOOT_SPEED, SHOT_RADIUS
 
 class Player(CircleShape):
 	
@@ -42,7 +42,7 @@ class Player(CircleShape):
 			pygame.quit()
 
 		if keys[pygame.K_SPACE]:
-			self.shoot()
+			self.shoot(dt)
 		
 	def rotate(self, dt):
 		self.rotation += PLAYER_TURN_SPEED * dt
@@ -53,11 +53,15 @@ class Player(CircleShape):
 		self.position += forward * PLAYER_SPEED * dt
 		
 
-	def shoot(self):
-		shot = Shot(self.x, self.y)
-		shot.velocity = pygame.Vector2(0,1).rotate(self.rotate+PLAYER_SHOOT_SPEED)
+	def shoot(self, dt):
+		shot = Shot(self.position.x, self.position.y)
+		shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED 
 
 
 		 
 	
-		
+	"""
+	pygame.Vector2(0, 1) - create's a unit vector point straight upward in the position y direction
+
+
+	"""

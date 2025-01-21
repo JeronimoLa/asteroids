@@ -5,10 +5,10 @@ from constants import PLAYER_TURN_SPEED, PLAYER_SPEED, PLAYER_SHOOT_SPEED, SHOT_
 
 class Player(CircleShape):
 	
-	def __init__(self, x, y, PLAYER_RADIUS):
+	def __init__(self, x, y, radius):
 		self.x = x
 		self.y = y
-		self.radius = 2
+		self.radius = radius
 		super().__init__(x, y, PLAYER_RADIUS)
 		self.rotation = 0
 
@@ -42,7 +42,11 @@ class Player(CircleShape):
 			pygame.quit()
 
 		if keys[pygame.K_SPACE]:
-			self.shoot(dt)
+			self.shoot()
+
+		if keys[pygame.K_c]:
+			self.big_shot()
+
 		
 	def rotate(self, dt):
 		self.rotation += PLAYER_TURN_SPEED * dt
@@ -53,10 +57,15 @@ class Player(CircleShape):
 		self.position += forward * PLAYER_SPEED * dt
 		
 
-	def shoot(self, dt):
+	def shoot(self):
+
 		shot = Shot(self.position.x, self.position.y)
 		shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED 
 
+	def big_shot(self):
+		
+		big_shot = BigShot(self.position.x, self.position.y)
+		big_shot.velocity = pygame.Vector2(0, 1).rotate(self.rotation) * PLAYER_SHOOT_SPEED 
 
 		 
 	

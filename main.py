@@ -7,7 +7,6 @@ from asteroidfield import *
 from shot import *
 
 def main():
-
 	x = SCREEN_WIDTH / 2
 	y = SCREEN_HEIGHT / 2
 	pygame.init()
@@ -51,7 +50,7 @@ def main():
 			for shot in shots:
 				if shot.check_collisions(asteroid):
 					pygame.sprite.Sprite.kill(shot)
-					pygame.sprite.Sprite.kill(asteroid)
+					asteroid.split()
 
 		screen.fill("black")
 		

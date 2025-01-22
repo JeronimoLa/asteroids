@@ -1,12 +1,9 @@
-
 import sys
-
 from circleshape import * 
 from shot import *
 from constants import PLAYER_TURN_SPEED, PLAYER_SPEED, PLAYER_SHOOT_SPEED, SHOT_RADIUS
 
 class Player(CircleShape):
-	
 	def __init__(self, x, y, radius):
 		self.x = x
 		self.y = y

@@ -1,6 +1,5 @@
 import pygame
 
-
 class CircleShape(pygame.sprite.Sprite):
     def __init__(self, x, y, radius):
 
@@ -25,5 +24,4 @@ class CircleShape(pygame.sprite.Sprite):
         dist = pygame.math.Vector2.distance_to(self.position, CircleShapeObject.position)
         if dist <= self.radius+ CircleShapeObject.radius:
             return True
-        
-
+    

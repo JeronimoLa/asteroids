@@ -22,7 +22,6 @@ def main():
 	Asteroid.containers = (asteroids, updatable, drawable)
 	Shot.containers = (shots, updatable, drawable )
 	AsteroidField.containers = (updatable,)
-	# Shot.containers = (big_shots, updatable, drawable )
 
 	asteroid_field = AsteroidField()
 
@@ -61,7 +60,5 @@ def main():
 		
 		dt = clock.tick(60) / 1000
 	
-
 if __name__ == "__main__":
 	main()
-
